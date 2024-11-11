@@ -12,6 +12,8 @@ function App() {
     { id: 5, name: "Vinay", age: 23, location: "Udupi" }
   ];
 
+  const [open, setOpen] = useState(false);
+  const [selectedRow, setSelectedRow] = useState(null);
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
@@ -34,15 +36,38 @@ function App() {
     },
   ];
 
-  const handleViewClick = (row) => {
-        
+  const handleViewClick = (x) => {
+    setSelectedRow(x);  
+    setOpen(true);         
+  };
+
+  const handleClose = () => {
+    setOpen(false);        
+    setSelectedRow(null);  
   };
  
 
   return (
     <div style={{ height: 400, width: '100%' }}>
      
-      <DataGrid rows={details} columns={columns} pageSize={5} />
+      <DataGrid rows={details} columns={columns} />
+      <Dialog open={open} onClose={handleClose}>
+  <DialogTitle>Details</DialogTitle>
+  <DialogContent>
+    {selectedRow && (
+      <div>
+        <p> <strong>Name:</strong> {selectedRow.name}</p>
+        <p><strong>Age:</strong> {selectedRow.age}</p>
+        <p><strong>Location:</strong> {selectedRow.location}</p>
+      </div>
+    )}
+  </DialogContent>
+  <DialogActions>
+    <Button onClick={handleClose} color="primary">
+      Close
+    </Button>
+  </DialogActions>
+</Dialog>
 
     </div>
   );
