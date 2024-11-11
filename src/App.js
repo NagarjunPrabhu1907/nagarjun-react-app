@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import { Button} from '@mui/material';
 import './App.css';
-import { DataGrid } from '@mui/x-data-grid';
-import data from './Data.json'; 
+import data from './Data.json';
+import DatagridComponent from './DatagridComponent';
+import PopupComponent from './PopupComponent'; 
 
 function App() {
 
@@ -44,25 +45,18 @@ function App() {
   return (
     <div style={{ height: 400, width: '100%' }}>
      
-      <DataGrid rows={data} columns={columns} />
-      <Dialog open={open} onClose={handleClose}>
-  <DialogTitle>Details</DialogTitle>
-  <DialogContent>
-    {selectedRow && (
-      <div>
-        <p> <strong>Name:</strong> {selectedRow.name}</p>
-        <p><strong>Age:</strong> {selectedRow.age}</p>
-        <p><strong>Location:</strong> {selectedRow.location}</p>
-      </div>
-    )}
-  </DialogContent>
-  <DialogActions>
-    <Button onClick={handleClose} color="primary">
-      Close
-    </Button>
-  </DialogActions>
-</Dialog>
+      <DatagridComponent 
+      rows={data} 
+      columns={columns} 
+      onViewClick={handleViewClick}
+      />
 
+  <PopupComponent 
+        open={open} 
+        onClose={handleClose} 
+        selectedRow={selectedRow} 
+      />
+     
     </div>
   );
 }
