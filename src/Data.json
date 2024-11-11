@@ -1,0 +1,7 @@
+[
+    { "id": 1, "name": "Rajesh", "age": 33, "location": "Banglore" },
+    { "id": 2, "name": "Nagarjun", "age": 23, "location": "Mysore" },
+    { "id": 3, "name": "Girish", "age": 25, "location": "Mandya" },
+    { "id": 4, "name": "Ramanath", "age": 24, "location": "Honnavara" },
+    { "id": 5, "name": "Vinay", "age": 23, "location": "Udupi" }
+  ]

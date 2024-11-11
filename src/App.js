@@ -2,15 +2,9 @@ import React, { useState } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 import './App.css';
 import { DataGrid } from '@mui/x-data-grid';
+import data from './Data.json'; 
 
 function App() {
-  const details = [
-    { id: 1, name: "Rajesh", age: 33, location: "Banglore" },
-    { id: 2, name: "Nagarjun", age: 23, location: "Mysore" },
-    { id: 3, name: "Girish", age: 25, location: "Mandya" },
-    { id: 4, name: "Ramanath", age: 24, location: "Honnavara" },
-    { id: 5, name: "Vinay", age: 23, location: "Udupi" }
-  ];
 
   const [open, setOpen] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
@@ -50,7 +44,7 @@ function App() {
   return (
     <div style={{ height: 400, width: '100%' }}>
      
-      <DataGrid rows={details} columns={columns} />
+      <DataGrid rows={data} columns={columns} />
       <Dialog open={open} onClose={handleClose}>
   <DialogTitle>Details</DialogTitle>
   <DialogContent>
