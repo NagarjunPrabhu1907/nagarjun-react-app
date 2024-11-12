@@ -1,7 +1,8 @@
 import React from 'react';
 import { Dialog, DialogActions, DialogContent, DialogTitle, Button } from '@mui/material';
 
-const PopupComponent = ({ open, onClose, selectedRow }) => {
+const PopupComponent = ({ open, onClose, selectedRow, textValue,onTextValueChange }) => {
+ 
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>Details</DialogTitle>
@@ -11,6 +12,8 @@ const PopupComponent = ({ open, onClose, selectedRow }) => {
             <p><strong>Name:</strong> {selectedRow.name}</p>
             <p><strong>Age:</strong> {selectedRow.age}</p>
             <p><strong>Location:</strong> {selectedRow.location}</p>
+            <input type='text' value={textValue} onChange={onTextValueChange}/>
+
           </div>
         )}
       </DialogContent>
