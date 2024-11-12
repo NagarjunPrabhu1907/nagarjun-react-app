@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Button} from '@mui/material';
 import './App.css';
 import data from './Data.json';
-import DatagridComponent from './DatagridComponent';
-import PopupComponent from './PopupComponent'; 
-
+import NewComponent from './NewComponent';
+import CustomTabPanel from './TabComponent'
 function App() {
 
   const [open, setOpen] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
+  const [textValue,setTextValue]=useState('');
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
@@ -40,23 +40,28 @@ function App() {
     setOpen(false);        
     setSelectedRow(null);  
   };
- 
+  
+  const handleTextValueChange=(e)=>{
+    setTextValue(e.target.value)
+  }
 
+  console.log("textValue in AppComponent",textValue)
+  
   return (
     <div style={{ height: 400, width: '100%' }}>
-     
-      <DatagridComponent 
+     <NewComponent
       rows={data} 
       columns={columns} 
       onViewClick={handleViewClick}
+      open={open} 
+      onClose={handleClose} 
+      selectedRow={selectedRow} 
+      textValue={textValue}
+      onTextValueChange={handleTextValueChange}
       />
-
-  <PopupComponent 
-        open={open} 
-        onClose={handleClose} 
-        selectedRow={selectedRow} 
+      <CustomTabPanel
+      textValue={textValue}
       />
-     
     </div>
   );
 }
